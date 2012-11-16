@@ -33,4 +33,18 @@ public class Space {
     public void populate(Cell cell) {
         cells.add(cell);
     }
+
+    @Override
+    public String toString() {
+        String module = "module space ()\n{\n";
+        for (Cell cell : cells) {
+            module += String.format("  translate([%d, %d, %d]) { cube(1); };\n", cell.x, cell.y, cell.z);
+        }
+        module += "}\n";
+        return module;
+    }
+
+    public int population() {
+        return cells.size();
+    }
 }
