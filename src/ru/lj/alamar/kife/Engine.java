@@ -7,6 +7,7 @@ public class Engine {
     public Space step(Space old, Rules rules) {
         Space current = new Space();
         int[] boundaries = old.boundaries();
+        int population = 0;
         for (int x = boundaries[0] - 1; x <= boundaries[1] + 1; x++) {
             for (int y = boundaries[2] - 1; x <= boundaries[3] + 1; x++) {
                 for (int z = boundaries[4] - 1; x <= boundaries[5] + 1; x++) {
