@@ -9,9 +9,17 @@ public class Main {
         System.err.println("Initial pattern population is " + initial.population());
         System.out.println(initial);
         Space current = initial;
-        for (int i = 1; i <= 50; i++) {
+        Space previous = null;
+        for (int i = 1; i <= 100; i++) {
             current = Engine.step(current, Rules.LIFE);
-            System.err.println("After " + i + " generations population is " + current.population());
+            int population = current.population();
+            System.err.println("After " + i + " generations population is " + population);
+            if (population == 0) break;
+            if (current.equals(previous)) {
+                System.out.println(current);
+                break;
+            }
+            previous = current;
             if ((i % 10) == 0) {
                 System.out.println(current);
             }
