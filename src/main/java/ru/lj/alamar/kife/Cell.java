@@ -43,6 +43,6 @@ public class Cell {
     }
 
     public static boolean isGood(int x, int y, int z) {
-        return (x % 2 == y % 2) && (x % 2 == z % 2);
+        return ((x & 1) == (y & 1)) && ((x & 1) == (z & 1));
     }
 }
