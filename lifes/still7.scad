@@ -1,13 +1,4 @@
-module space ()
-{
-  translate([10, 6, 2]) { cube(1); }
-  translate([9, 7, 1]) { cube(1); }
-  translate([8, 8, 2]) { cube(1); }
-  translate([8, 6, 4]) { cube(1); }
-  translate([7, 7, 3]) { cube(1); }
-  translate([9, 5, 3]) { cube(1); }
-  translate([8, 6, 2]) { cube(1); }
-}
+use <kife.scad>
 
-space();
-
+kife_draw([[2, 4, 2], [1, 3, 3], [3, 3, 1], [4, 2, 2],
+           [2, 2, 4], [2, 2, 2], [3, 1, 3]]);
