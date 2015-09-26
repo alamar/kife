@@ -11,7 +11,7 @@ Every box is only connected to its 8 diagonal neighbors. So really we have mesh 
 
 For visualizations, I use openscad, with some effort it allows animations and colours.
 
-![Beautiful oscillator-4](https://raw.github.com/alamar/kife/master/oscillator3.gif)
+![Beautiful oscillator-4](https://raw.github.com/alamar/kife/master/oscillator4.gif)
 
 See examples in `lifes/`
 
