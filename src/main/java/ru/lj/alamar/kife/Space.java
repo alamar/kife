@@ -31,17 +31,17 @@ public class Space {
     }
 
     public void populate(Cell cell) {
+        assert(Cell.isGood(cell.x, cell.y, cell.z));
         cells.add(cell);
     }
 
     @Override
     public String toString() {
-        String module = "module space ()\n{\n";
+        String module = "kife_draw([";
         for (Cell cell : cells) {
-            module += String.format("  translate([%d, %d, %d]) { cube(1); }\n", cell.x, cell.y, cell.z);
+            module += String.format("[%d, %d, %d], ", cell.x, cell.y, cell.z);
         }
-        module += "}\n";
-        return module;
+        return module.substring(0, module.length() - 2) + "]);";
     }
 
     @Override
