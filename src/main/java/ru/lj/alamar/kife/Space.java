@@ -59,7 +59,7 @@ public class Space {
 
     public static String animate(ListF<Space> spaces) {
         int i = 1;
-        StringBuilder result = new StringBuilder("use <kife.scad>\n\n");
+        StringBuilder result = new StringBuilder("use <kife.scad>\n\ntranslate([-5, -5, -5]) {");
         for (Space space : spaces) {
             if (i == 1) {
                 result.append("if ($t < 1/").append(spaces.size()).append(") {\n");
@@ -71,6 +71,6 @@ public class Space {
             i++;
             result.append(space).append("\n");
         }
-        return result.append("}\n").toString();
+        return result.append("}\n}\n").toString();
     }
 }
