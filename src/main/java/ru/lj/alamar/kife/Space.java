@@ -2,6 +2,7 @@ package ru.lj.alamar.kife;
 
 import ru.yandex.bolts.collection.Cf;
 import ru.yandex.bolts.collection.SetF;
+import ru.yandex.bolts.collection.ListF;
 
 /**
  * @author ilyak
@@ -37,11 +38,11 @@ public class Space {
 
     @Override
     public String toString() {
-        String module = "kife_draw([";
+        StringBuilder module = new StringBuilder("kife_draw([");
         for (Cell cell : cells) {
-            module += String.format("[%d, %d, %d], ", cell.x, cell.y, cell.z);
+            module.append(String.format("[%d, %d, %d], ", cell.x, cell.y, cell.z));
         }
-        return module.substring(0, module.length() - 2) + "]);";
+        return module.delete(module.length() - 2, module.length()).append("]);").toString();
     }
 
     @Override
@@ -54,5 +55,22 @@ public class Space {
 
     public int population() {
         return cells.size();
+    }
+
+    public static String animate(ListF<Space> spaces) {
+        int i = 1;
+        StringBuilder result = new StringBuilder("use <kife.scad>\n\n");
+        for (Space space : spaces) {
+            if (i == 1) {
+                result.append("if ($t < 1/").append(spaces.size()).append(") {\n");
+            } else if (i == spaces.size()) {
+                result.append("} else {\n");
+            } else {
+                result.append("} else if ($t < ").append(i).append("/").append(spaces.size()).append(") {\n");
+            }
+            i++;
+            result.append(space).append("\n");
+        }
+        return result.append("}\n").toString();
     }
 }
